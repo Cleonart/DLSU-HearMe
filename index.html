@@ -9,6 +9,10 @@
             .poppins{
                 font-family: 'Poppins';
             }
+            #gauge{
+                right: -40px;
+                position: relative;
+            }
         </style>
     </head>
     <body>
@@ -30,9 +34,8 @@
                     <p class="mt-0 display-2">80 DB</p>
                 </div>
                 <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-                    <canvas id="foo" class="h-75 w-100"></canvas>
+                    <canvas id="gauge" class="h-75 w-100"></canvas>
                 </div>
-                
             </div>
         </main>
         
@@ -68,7 +71,7 @@
                 }
             
             };
-            var target = document.getElementById('foo'); // your canvas element
+            var target = document.getElementById('gauge'); // your canvas element
             var gauge = new Donut(target).setOptions(opts); // create sexy gauge!
             gauge.maxValue = 3000; // set max gauge value
             gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
