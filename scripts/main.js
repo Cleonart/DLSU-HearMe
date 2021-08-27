@@ -1,4 +1,4 @@
-const HOST = "ws://127.0.0.1:7890";
+const HOST = "ws://192.168.43.193:7890";
 
 let app = new Vue({
     el : "#app",
@@ -29,7 +29,7 @@ let app = new Vue({
             };
             var target = document.getElementById('gauge');          // your canvas element
             this.soundGauge = new Donut(target).setOptions(opts);   // create sexy gauge!
-            this.soundGauge.maxValue = 3000;                        // set max gauge value
+            this.soundGauge.maxValue = 1024;                        // set max gauge value
             this.soundGauge.setMinValue(0);                         // Prefer setter over gauge.minValue = 0
             this.soundGauge.animationSpeed = 83;                    // set animation speed (32 is default value)
             this.soundGauge.set(925);                               // set actual value
@@ -44,7 +44,6 @@ let app = new Vue({
             
             // If Successfully Connected to WSS
             this.connection.onopen = function(event) {
-                console.log("message");
                 app.iotDeviceStatus = 200;
                 app.connection.send("tess");
             }
@@ -52,7 +51,7 @@ let app = new Vue({
             // On Message 
             this.connection.onmessage = function(event){
                 console.log(event);
-                alert("New message arrived");
+                app.soundGauge.set(parseInt(event.data));
             }
             
             // If Connection to WSS Closed
