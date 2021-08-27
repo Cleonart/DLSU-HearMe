@@ -4,6 +4,7 @@ let app = new Vue({
     el : "#app",
     data : {
         soundGauge : null,
+        soundValue : 0,
         connection : null,
         iotDeviceStatus : 0
     },
@@ -51,6 +52,7 @@ let app = new Vue({
             // On Message 
             this.connection.onmessage = function(event){
                 console.log(event);
+                app.soundValue = parseInt(event.data);
                 app.soundGauge.set(parseInt(event.data));
             }
             
