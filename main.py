@@ -1,10 +1,9 @@
 import websockets
 import asyncio
+import os
 
-PORT = 7890
-
-print("Server listening on Port " + str(PORT))
-
+RESERVE = int(os.environ["PORT"])
+print("Server listening on port " + RESERVE)
 connected = set()
 
 async def echo(websocket, path):
@@ -19,6 +18,6 @@ async def echo(websocket, path):
     finally:
         connected.remove(websocket)
 
-start_server = websockets.serve(echo, "0.0.0.0", PORT)
+start_server = websockets.serve(echo, "", RESERVE)
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
