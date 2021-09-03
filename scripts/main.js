@@ -1,4 +1,4 @@
-const HOST = "ws://192.168.43.193:7890";
+const HOST = "wss://dlsu-hearme.herokuapp.com";
 
 let app = new Vue({
     el : "#app",
