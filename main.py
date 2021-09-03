@@ -19,6 +19,6 @@ async def echo(websocket, path):
     finally:
         connected.remove(websocket)
 
-start_server = websockets.serve(echo, "", PORT)
+start_server = websockets.serve(echo, "0.0.0.0", PORT)
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
