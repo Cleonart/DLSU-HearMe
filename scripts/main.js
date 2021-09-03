@@ -46,7 +46,7 @@ let app = new Vue({
             // If Successfully Connected to WSS
             this.connection.onopen = function(event) {
                 app.iotDeviceStatus = 200;
-                app.connection.send("tess");
+                app.connection.send("Requesting Connection From Client");
             }
 
             // On Message 
